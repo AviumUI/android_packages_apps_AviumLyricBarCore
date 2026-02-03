@@ -24,6 +24,7 @@ import android.content.Intent
 import androidx.core.app.NotificationCompat
 import org.avium.alivenotifscore.MainActivity
 import org.avium.alivenotifscore.R
+import org.avium.alivenotifscore.service.LyricNotificationService
 
 class LiveNotificationManager(private val context: Context) {
 
@@ -55,11 +56,13 @@ class LiveNotificationManager(private val context: Context) {
     }
 
     fun sendLyricBroadcast(lyric: String) {
-        val intent = Intent(ACTION_SHOW_CHIP).apply {
-            putExtra(EXTRA_TYPE, CHIP_TYPE_MUSIC)
-            putExtra(EXTRA_TEXT, lyric)
-        }
+        if (LyricNotificationService.isLyricEnabled(context)) {
+            val intent = Intent(ACTION_SHOW_CHIP).apply {
+                putExtra(EXTRA_TYPE, CHIP_TYPE_MUSIC)
+                putExtra(EXTRA_TEXT, lyric)
+            }
         context.sendBroadcast(intent)
+        }
     }
 
     fun createLyricNotification(
