@@ -1,0 +1,50 @@
+android_app {
+    name: "AviumLyricBarCore",
+    srcs: [
+        "**/*.kt", 
+    ],
+    resource_dirs: ["res"],
+    manifest: "AndroidManifest.xml",
+    
+    platform_apis: true,
+    system_ext_specific: true,
+    certificate: "platform",
+    privileged: true,
+    required: ["privapp-permissions-org.avium.alivenotifscore.xml"],
+
+    static_libs: [
+        "androidx.core_core-ktx",
+        "androidx.appcompat_appcompat",
+        "androidx.activity_activity-compose",
+        "androidx.lifecycle_lifecycle-runtime-ktx",
+        "androidx.lifecycle_lifecycle-viewmodel-compose",
+        "androidx.lifecycle_lifecycle-service",
+        "androidx.compose.runtime_runtime",
+        "androidx.compose.foundation_foundation",
+        "androidx.compose.foundation_foundation-layout",
+        "androidx.compose.animation_animation",
+        "androidx.compose.material_material-icons-core",
+        "androidx.compose.material_material-icons-extended",
+        "androidx.compose.material3_material3",
+        "androidx.compose.ui_ui",
+        "androidx.compose.ui_ui-tooling",
+        "androidx.compose.ui_ui-util",
+        "androidx.navigation_navigation-compose", 
+        "androidx.navigation_navigation-common",
+        "kotlin-stdlib",
+        "kotlinx-coroutines-android",
+        "kotlinx-coroutines-core",
+        "accompanist-systemuicontroller",
+    ],
+
+    overrides: [
+    ],
+}
+
+prebuilt_etc {
+    name: "privapp-permissions-org.avium.alivenotifscore.xml",
+    system_ext_specific: true,
+    sub_dir: "permissions",
+    src: "privapp-permissions-org.avium.alivenotifscore.xml",
+    filename_from_src: true,
+}
