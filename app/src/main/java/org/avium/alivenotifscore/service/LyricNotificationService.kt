@@ -143,7 +143,9 @@ class LyricNotificationService : Service() {
         }
 
         val lyric = metadata.getString(MediaMetadata.METADATA_KEY_TITLE) ?: ""
-        notificationManager.sendLyricBroadcast(lyric)
+        if (lyric.isNotEmpty()) {
+            notificationManager.sendLyricBroadcast(lyric)
+        }
     }
 
     override fun onDestroy() {
