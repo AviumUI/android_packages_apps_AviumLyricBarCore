@@ -56,6 +56,7 @@ class LiveNotificationManager(private val context: Context) {
     }
 
     fun sendLyricBroadcast(lyric: String) {
+        if(lyric == null) return
         if (LyricNotificationService.isLyricEnabled(context)) {
             val intent = Intent(ACTION_SHOW_CHIP).apply {
                 putExtra(EXTRA_TYPE, CHIP_TYPE_MUSIC)
